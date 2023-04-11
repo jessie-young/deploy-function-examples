@@ -27,7 +27,7 @@ var axios = require('axios');
 var FormData = require('form-data');
 var fs = require('fs');
 var data = new FormData();
-data.append('archive', fs.createReadStream('/Users/jessieyoung/backendflow.tar.gz'));
+data.append('archive', fs.createReadStream('/Users/jessieyoung/javascript.tar.gz'));
 data.append('runtime', 'nodejs18.x');
 data.append('platform', 'lambda');
 data.append('handlerFile', 'handler.js');
