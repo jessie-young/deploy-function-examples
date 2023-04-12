@@ -21,63 +21,13 @@ curl --location --request POST 'https://api.cakework.com/v1/function/deploy/arch
 --form 'handlerFunction="functionHandler"'
 ```
 
-Sample request using Javascript using the NodeJS Axios library:
-```
-var axios = require('axios');
-var FormData = require('form-data');
-var fs = require('fs');
-var data = new FormData();
-data.append('archive', fs.createReadStream('/Users/jessieyoung/javascript.tar.gz'));
-data.append('runtime', 'nodejs18.x');
-data.append('platform', 'lambda');
-data.append('handlerFile', 'handler.js');
-data.append('handlerFunction', 'functionHandler');
-
-var config = {
-  method: 'post',
-  url: 'https://api.cakework.com/v1/function/deploy/archive',
-  headers: { 
-    'X-Api-Key': 'REDACTED', 
-    ...data.getHeaders()
-  },
-  data : data
-};
-
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
-});
-
-
-```
-
 5. The `deployFunctionFromArchive` call will return a function id, as well as an endpoint you can use to now call your function.
 
-Sample request using Javascript's fetch, using an endpoint which was returned by a `deploy` call:
+Sample request using curl, using an endpoint which was returned by a `deploy` call:
 ```
-var axios = require('axios');
-var data = '';
-
-var config = {
-  method: 'post',
-  url: 'https://le2bipucx7.execute-api.us-west-2.amazonaws.com/7298fe8c-fa11-4408-bdbf-64254af543ac',
-  headers: { 
-    'X-Api-Key': 'REDACTED'
-  },
-  data : data
-};
-
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
-});
-
+curl --location --request POST 'https://le2bipucx7.execute-api.us-west-2.amazonaws.com/c24fcd79-c275-4ae3-a679-6114dca71562?yourName=jessie&yourAge=12' \
+--header 'X-Api-Key: REDACTED' \
+--data-raw ''
 ```
 
 
