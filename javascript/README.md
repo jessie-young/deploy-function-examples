@@ -35,7 +35,7 @@ data.append('handlerFunction', 'functionHandler');
 
 var config = {
   method: 'post',
-  url: 'http://localhost:8081/v1/function/deploy/archive',
+  url: 'https://api.cakework.com/v1/function/deploy/archive',
   headers: { 
     'X-Api-Key': 'REDACTED', 
     ...data.getHeaders()
